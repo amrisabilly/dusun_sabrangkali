@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dusun Sabrangkali — Profil Dusun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#182B22;
+    --paper:#F6F1E6;
+    --paper-2:#EFE8D8;
+    --green:#1F3D2E;
+    --green-deep:#0F241A;
+    --green-mid:#375C46;
+    --gold:#C9971E;
+    --gold-soft:#E4C878;
+    --clay:#B15A32;
+    --sky:#4C7A8C;
+    --line: rgba(24,43,34,0.14);
+    --shadow: 0 20px 50px -25px rgba(15,36,26,0.45);
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--green-deep);
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--clay);
+    font-weight:600;
+  }
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .section{padding:96px 0;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head .eyebrow{margin-bottom:14px;display:block;}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.5rem);}
+  .section-head p{margin-top:16px;color:var(--green-mid);font-size:1.02rem;}
+
+  /* ---------- Terrace contour divider (signature element) ---------- */
+  .terrace-divider{width:100%;line-height:0;background:var(--paper);}
+  .terrace-divider svg{width:100%;height:56px;display:block;}
+  .terrace-divider.on-green{background:var(--green-deep);}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,241,230,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .brand svg{width:38px;height:38px;flex-shrink:0;}
+  .brand-text{display:flex;flex-direction:column;line-height:1.1;}
+  .brand-text b{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;color:var(--green-deep);}
+  .brand-text span{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;color:var(--green-mid);text-transform:uppercase;}
+  .navlinks{display:flex;gap:30px;list-style:none;margin:0;padding:0;}
+  .navlinks a{text-decoration:none;font-size:0.92rem;font-weight:600;color:var(--green);position:relative;padding:4px 0;}
+  .navlinks a:after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--gold);transition:width .25s ease;}
+  .navlinks a:hover:after{width:100%;}
+  #navtoggle{display:none;}
+  .burger{display:none;cursor:pointer;flex-direction:column;gap:5px;}
+  .burger span{width:24px;height:2px;background:var(--green-deep);display:block;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;min-height:88vh;display:flex;align-items:flex-end;
+    background:var(--green-deep);
+    overflow:hidden;
+  }
+  .hero img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    opacity:0.82;
+  }
+  .hero:before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(15,36,26,0.15) 0%, rgba(15,36,26,0.35) 45%, rgba(11,26,19,0.94) 100%);
+  }
+  .hero-content{position:relative;z-index:2;width:100%;padding-bottom:56px;}
+  .hero-content .eyebrow{color:var(--gold-soft);}
+  .hero-content h1{
+    color:#FBF7EC;
+    font-size:clamp(2.6rem,7vw,5.2rem);
+    font-style:italic;
+    font-weight:500;
+    margin-top:14px;
+    max-width:900px;
+  }
+  .hero-content .sub{
+    color:#E7E1CF;max-width:560px;margin-top:18px;font-size:1.05rem;
+  }
+  .hero-stats{
+    margin-top:44px;display:flex;flex-wrap:wrap;gap:0;
+    border-top:1px solid rgba(251,247,236,0.25);
+    padding-top:24px;
+  }
+  .hero-stat{padding:0 32px 0 0;margin-right:32px;border-right:1px solid rgba(251,247,236,0.2);}
+  .hero-stat:last-child{border-right:none;}
+  .hero-stat b{
+    display:block;font-family:'JetBrains Mono',monospace;color:var(--gold-soft);
+    font-size:1.5rem;font-weight:600;
+  }
+  .hero-stat span{font-size:0.75rem;color:#CFC7AE;letter-spacing:0.04em;}
+
+  /* ---------- Selayang Pandang (intro split) ---------- */
+  .split{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
+  .split img{border-radius:4px;box-shadow:var(--shadow);}
+  .split .figure-cap{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--green-mid);margin-top:10px;letter-spacing:0.02em;}
+  .lede{font-size:1.12rem;color:var(--ink);}
+  .lede + p{color:var(--green-mid);margin-top:14px;}
+
+  /* ---------- Visi Misi ---------- */
+  .visi-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:44px;}
+  .visi-card{
+    background:var(--green-deep);color:#F3EEDF;border-radius:6px;padding:38px;
+  }
+  .visi-card .eyebrow{color:var(--gold-soft);}
+  .visi-card h3{color:#F3EEDF;font-size:1.4rem;margin-top:12px;font-style:italic;font-weight:500;}
+  .misi-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;}
+  .misi-list li{
+    display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line);
+  }
+  .misi-list li:first-child{padding-top:0;}
+  .misi-num{font-family:'JetBrains Mono',monospace;color:var(--clay);font-weight:600;font-size:0.95rem;flex-shrink:0;}
+  .misi-list p{margin:0;color:var(--ink);}
+
+  /* ---------- Potensi cards ---------- */
+  .potensi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .potensi-card{
+    border-radius:6px;overflow:hidden;background:#fff;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;
+  }
+  .potensi-card .img-wrap{aspect-ratio:4/3;overflow:hidden;}
+  .potensi-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .potensi-card:hover img{transform:scale(1.05);}
+  .potensi-body{padding:22px 24px 26px;}
+  .potensi-body .eyebrow{color:var(--clay);}
+  .potensi-body h3{font-size:1.15rem;margin-top:10px;}
+  .potensi-body p{color:var(--green-mid);margin-top:8px;font-size:0.95rem;}
+
+  /* ---------- Tutupan Lahan (map showcase) ---------- */
+  .landmap-frame{
+    position:relative;border-radius:8px;overflow:hidden;box-shadow:var(--shadow);
+    border:1px solid var(--line);background:#fff;
+  }
+  .landmap-frame img{width:100%;height:auto;display:block;}
+  .landmap-caption{
+    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    padding:16px 22px;background:var(--paper-2);border-top:1px solid var(--line);
+  }
+  .landmap-caption span{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--green-mid);letter-spacing:0.02em;}
+  .legend-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 22px;margin-top:28px;}
+  .legend-item{display:flex;align-items:center;gap:12px;}
+  .legend-swatch{width:20px;height:20px;border-radius:4px;flex-shrink:0;border:1px solid rgba(24,43,34,0.15);}
+  .legend-item span{font-size:0.92rem;color:var(--ink);}
+
+  /* ---------- Galeri ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px;}
+  .gallery figure{margin:0;overflow:hidden;border-radius:4px;position:relative;}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .gallery figure:hover img{transform:scale(1.08);}
+  .gallery figure:nth-child(1){grid-column:span 2;grid-row:span 2;}
+  .gallery figure:nth-child(4){grid-column:span 2;}
+  .gallery figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:10px 12px;
+    background:linear-gradient(0deg, rgba(15,36,26,0.85), transparent);
+    color:#F3EEDF;font-size:0.72rem;font-family:'JetBrains Mono',monospace;
+  }
+
+  /* ---------- Kontak ---------- */
+  .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:44px;}
+  .contact-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px;}
+  .contact-list li{display:flex;gap:16px;}
+  .contact-list b{display:block;font-size:0.95rem;}
+  .contact-list span{color:var(--green-mid);font-size:0.9rem;}
+  .icon-dot{
+    width:34px;height:34px;border-radius:50%;background:var(--green-deep);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;color:var(--gold-soft);font-family:'JetBrains Mono',monospace;font-size:0.8rem;
+  }
+  .map-wrap{border-radius:6px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);}
+  .map-wrap iframe{width:100%;height:100%;min-height:340px;border:0;display:block;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--green-deep);color:#DCD5BF;padding:52px 0 28px;}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-bottom:36px;border-bottom:1px solid rgba(220,213,191,0.15);}
+  .footer-brand{display:flex;align-items:center;gap:12px;}
+  .footer-brand b{font-family:'Fraunces',serif;font-style:italic;font-size:1.2rem;color:#F3EEDF;font-weight:500;}
+  .footer-links{display:flex;gap:36px;flex-wrap:wrap;}
+  .footer-links ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+  .footer-links a{text-decoration:none;font-size:0.88rem;color:#CFC7AE;}
+  .footer-links a:hover{color:var(--gold-soft);}
+  .footer-links h4{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-soft);margin:0 0 10px;}
+  .footer-bottom{padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:0.78rem;color:#9FA890;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 880px){
+    .navlinks{
+      position:absolute;top:76px;left:0;right:0;background:var(--paper);
+      flex-direction:column;padding:20px 28px;gap:18px;border-bottom:1px solid var(--line);
+      display:none;
+    }
+    #navtoggle:checked ~ .navlinks{display:flex;}
+    .burger{display:flex;}
+    .split, .visi-grid, .contact-grid{grid-template-columns:1fr;}
+    .potensi-grid{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:140px;}
+    .gallery figure:nth-child(1){grid-column:span 2;grid-row:span 1;}
+    .legend-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <img src="public/logo.webp" alt="" width="38" height="38" style="flex-shrink:0;">
+      <span class="brand-text"><b>Dusun Sabrangkali</b><span>Bersih · Guyub · Sejahtera</span></span>
+    </a>
+    <input type="checkbox" id="navtoggle">
+    <ul class="navlinks">
+      <li><a href="#profil">Profil</a></li>
+      <li><a href="#visi-misi">Visi &amp; Misi</a></li>
+      <li><a href="#struktur">Struktur</a></li>
+      <li><a href="#potensi">Potensi</a></li>
+      <li><a href="#tutupan-lahan">Tutupan Lahan</a></li>
+      <li><a href="#galeri">Galeri</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+    <label class="burger" for="navtoggle"><span></span><span></span><span></span></label>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <img src="public/bg.webp" alt="Keindahan alam Dusun Sabrangkali">
+  <div class="wrap hero-content">
+    <span class="eyebrow">Profil Dusun</span>
+    <h1>Dusun Sabrangkali</h1>
+    <p class="sub">Wilayah pemukiman yang asri, sejuk, dan dikelilingi bentang alam subur — menjadikan Sabrangkali salah satu kawasan yang tetap menjaga kelestarian alam di tengah perkembangan zaman, dengan warga yang guyub rukun dan menjunjung tinggi gotong royong.</p>
+  </div>
+</section>
+
+<div class="terrace-divider"><svg viewBox="0 0 1200 56" preserveAspectRatio="none">
+  <path d="M0,40 Q100,10 200,40 T400,40 T600,40 T800,40 T1000,40 T1200,40" stroke="#375C46" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M0,48 Q100,20 200,48 T400,48 T600,48 T800,48 T1000,48 T1200,48" stroke="#C9971E" stroke-width="2" fill="none" opacity="0.7"/>
+</svg></div>
+
+<section class="section" id="profil">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <span class="eyebrow">Wilayah &amp; Warga</span>
+        <h2 style="margin-top:14px;">Tentang Wilayah Kami</h2>
+        <p class="lede" style="margin-top:20px;">Dusun Sabrangkali merupakan sebuah wilayah pemukiman yang asri, sejuk, dan dikelilingi oleh bentang alam yang subur. Secara geografis, letak dusun ini memberikan keunggulan tersendiri dalam sektor agraris dan lingkungan hidup, menjadikannya salah satu kawasan yang tetap mempertahankan kelestarian alam di tengah perkembangan zaman.</p>
+        <p>Kehidupan sosial di Dusun Sabrangkali dibangun di atas pondasi nilai-nilai keagamaan yang kuat dan semangat gotong royong yang kental. Masyarakat Sabrangkali dikenal sangat <em>guyub rukun</em>, saling bahu-membahu dalam setiap kegiatan kemasyarakatan, serta menjunjung tinggi toleransi antarwarga. Pembangunan di dusun ini bergerak dinamis berkat sinergi yang kokoh antara tokoh masyarakat, perangkat dusun, warga, hingga peran aktif pemuda-pemudi Karang Taruna.</p>
+      </div>
+      <div>
+        <img src="public/sunrise.webp" alt="Keindahan persawahan Dusun Sabrangkali">
+        <div class="figure-cap">Keindahan Persawahan Dusun Sabrangkali</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="terrace-divider"><svg viewBox="0 0 1200 56" preserveAspectRatio="none">
+  <path d="M0,40 Q100,10 200,40 T400,40 T600,40 T800,40 T1000,40 T1200,40" stroke="#375C46" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M0,48 Q100,20 200,48 T400,48 T600,48 T800,48 T1000,48 T1200,48" stroke="#C9971E" stroke-width="2" fill="none" opacity="0.7"/>
+</svg></div>
+
+<section class="section" id="visi-misi">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Arah Bersama</span>
+      <h2>Visi &amp; Misi</h2>
+    </div>
+    <div class="visi-grid">
+      <div class="visi-card">
+        <span class="eyebrow">Visi</span>
+        <h3>"Menciptakan lingkungan Sabrangkali yang bersih, rapi, religius, guyub dan sejahtera."</h3>
+      </div>
+      <ul class="misi-list">
+        <li><span class="misi-num">01</span><p><b>Pembangunan Fasilitas</b> — Membantu Desa dalam pembangunan fasilitas umum dusun.</p></li>
+        <li><span class="misi-num">02</span><p><b>Sinergi Komunitas</b> — Memperkuat kerjasama antara tokoh masyarakat, warga dan karang taruna.</p></li>
+        <li><span class="misi-num">03</span><p><b>Kelestarian Lingkungan</b> — Menjaga keasrian dusun.</p></li>
+        <li><span class="misi-num">04</span><p><b>Karakter Warga</b> — Menciptakan dusun Sabrangkali yang religius dan guyub rukun.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="terrace-divider"><svg viewBox="0 0 1200 56" preserveAspectRatio="none">
+  <path d="M0,40 Q100,10 200,40 T400,40 T600,40 T800,40 T1000,40 T1200,40" stroke="#375C46" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M0,48 Q100,20 200,48 T400,48 T600,48 T800,48 T1000,48 T1200,48" stroke="#C9971E" stroke-width="2" fill="none" opacity="0.7"/>
+</svg></div>
+
+<section class="section" id="struktur" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Tata Kelola</span>
+      <h2>Struktur Perangkat Dusun</h2>
+      <p>Informasi susunan organisasi Dusun Sabrangkali.</p>
+    </div>
+    <div class="map-wrap" style="min-height:auto;max-width:80%;margin:0 auto;">
+      <img src="public/Perangkat Dusun Sabrangkali.webp" alt="Struktur Perangkat Dusun Sabrangkali" style="width:100%;height:auto;display:block;">
+    </div>
+  </div>
+</section>
+
+<div class="terrace-divider"><svg viewBox="0 0 1200 56" preserveAspectRatio="none">
+  <path d="M0,40 Q100,10 200,40 T400,40 T600,40 T800,40 T1000,40 T1200,40" stroke="#375C46" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M0,48 Q100,20 200,48 T400,48 T600,48 T800,48 T1000,48 T1200,48" stroke="#C9971E" stroke-width="2" fill="none" opacity="0.7"/>
+</svg></div>
+
+<section class="section" id="potensi">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Unggulan Dusun</span>
+      <h2>Potensi Dusun</h2>
+      <p>Sektor unggulan yang menjadi penggerak ekonomi, kemandirian, dan kesejahteraan warga dusun.</p>
+    </div>
+    <div class="potensi-grid">
+      <div class="potensi-card">
+        <div class="img-wrap"><img src="public/sawah.webp" alt="Sawah padi Dusun Sabrangkali"></div>
+        <div class="potensi-body">
+          <span class="eyebrow">Sektor Pertanian</span>
+          <h3>Padi, Jagung &amp; Cabai</h3>
+          <p>Dengan tanah subur dan pengairan melimpah, komoditas utama berupa padi, jagung, serta berbagai sayuran segar dikelola secara tekun oleh kelompok tani setempat.</p>
+        </div>
+      </div>
+      <div class="potensi-card">
+        <div class="img-wrap"><img src="public/ikan4.webp" alt="Kolam ikan konsumsi warga Dusun Sabrangkali"></div>
+        <div class="potensi-body">
+          <span class="eyebrow">Perikanan &amp; Budidaya</span>
+          <h3>Ikan Konsumsi</h3>
+          <p>Pemanfaatan sumber air bersih lokal mendukung budidaya perikanan air tawar; warga aktif mengelola kolam pembesaran ikan konsumsi sebagai mata pencaharian penting.</p>
+        </div>
+      </div>
+      <div class="potensi-card">
+        <div class="img-wrap"><img src="public/slondok.webp" alt="Produksi makanan ringan dan kerajinan warga"></div>
+        <div class="potensi-body">
+          <span class="eyebrow">UMKM &amp; Industri Kreatif</span>
+          <h3>Olahan Makanan &amp; Kerajinan</h3>
+          <p>Kreativitas warga terwujud dalam industri rumah tangga skala mikro, dari makanan ringan tradisional hingga kerajinan tangan lokal, terus didorong guna memperluas lapangan kerja.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="https://s.id/dusunsabrangkali" target="_blank" rel="noopener" style="display:inline-block;background:var(--gold);color:var(--green-deep);font-weight:700;border-radius:999px;padding:12px 30px;text-decoration:none;">Tertarik Berkolaborasi? Hubungi Kami</a>
+    </div>
+  </div>
+</section>
+
+<div class="terrace-divider"><svg viewBox="0 0 1200 56" preserveAspectRatio="none">
+  <path d="M0,40 Q100,10 200,40 T400,40 T600,40 T800,40 T1000,40 T1200,40" stroke="#375C46" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M0,48 Q100,20 200,48 T400,48 T600,48 T800,48 T1000,48 T1200,48" stroke="#C9971E" stroke-width="2" fill="none" opacity="0.7"/>
+</svg></div>
+
+<!-- <section class="section" id="tutupan-lahan" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Data Spasial</span>
+      <h2>Peta Tutupan Lahan</h2>
+      <p>Hasil digitasi tutupan lahan Dusun Sabrangkali, menggambarkan sebaran penggunaan lahan seperti permukiman, sawah, kebun, dan badan air di wilayah dusun.</p>
+    </div>
+    <div class="landmap-frame">
+      <img src="public/kerentanan.jpg" alt="Peta tutupan lahan Dusun Sabrangkali hasil digitasi">
+      <div class="landmap-caption">
+        <span>Peta Tutupan Lahan — Dusun Sabrangkali</span>
+        <span>Sumber: Digitasi Warga, 2026</span>
+      </div>
+    </div>
+    <div class="legend-grid">
+      <div class="legend-item"><span class="legend-swatch" style="background:#E8C05A;"></span><span>Permukiman</span></div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#7CA65B;"></span><span>Sawah</span></div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#3F7D4F;"></span><span>Kebun / Tegalan</span></div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#4C7A8C;"></span><span>Sungai / Badan Air</span></div>
+    </div>
+  </div>
+</section> -->
+
+<div class="terrace-divider"><svg viewBox="0 0 1200 56" preserveAspectRatio="none">
+  <path d="M0,40 Q100,10 200,40 T400,40 T600,40 T800,40 T1000,40 T1200,40" stroke="#375C46" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M0,48 Q100,20 200,48 T400,48 T600,48 T800,48 T1000,48 T1200,48" stroke="#C9971E" stroke-width="2" fill="none" opacity="0.7"/>
+</svg></div>
+
+<section class="section" id="galeri">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Dokumentasi</span>
+      <h2>Galeri Foto</h2>
+      <p>Dokumentasi visual keindahan alam dan kebersamaan warga di Dusun Sabrangkali.</p>
+    </div>
+    <div class="gallery">
+      <figure>
+        <img src="public/mertiidusun.webp" alt="Merti Dusun Sabrangkali">
+        <figcaption>Merti Dusun</figcaption>
+      </figure>
+      <figure>
+        <img src="public/pertemuankartar.webp" alt="Pertemuan warga dan Karang Taruna Sabrangkali">
+        <figcaption>Pertemuan Warga Sabrangkali</figcaption>
+      </figure>
+      <figure>
+        <img src="public/sungai.webp" alt="Sungai Sabrangkali di pagi hari">
+        <figcaption>Sungai Sabrangkali</figcaption>
+      </figure>
+      <figure>
+        <img src="public/kelas.webp" alt="Kelas kreatif anak Dusun Sabrangkali">
+        <figcaption>Kelas Kreatif Anak</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<div class="terrace-divider on-green"><svg viewBox="0 0 1200 56" preserveAspectRatio="none">
+  <path d="M0,40 Q100,10 200,40 T400,40 T600,40 T800,40 T1000,40 T1200,40" stroke="#375C46" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M0,48 Q100,20 200,48 T400,48 T600,48 T800,48 T1000,48 T1200,48" stroke="#C9971E" stroke-width="2" fill="none" opacity="0.8"/>
+</svg></div>
+
+<section class="section" id="kontak" style="background:var(--green-deep);color:#F3EEDF;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="color:var(--gold-soft);">Hubungi Kami</span>
+      <h2 style="color:#F3EEDF;">Kontak &amp; Lokasi</h2>
+      <p style="color:#CFC7AE;">Kami membuka pintu kerja sama bagi akademisi, investor, maupun instansi yang ingin membantu mengembangkan potensi lokal Dusun Sabrangkali.</p>
+    </div>
+    <div class="contact-grid">
+      <ul class="contact-list">
+        <li>
+          <span class="icon-dot">@</span>
+          <div><b>Kontak &amp; Kolaborasi</b><span><a href="https://s.id/dusunsabrangkali" target="_blank" rel="noopener" style="color:inherit;">s.id/dusunsabrangkali</a></span></div>
+        </li>
+        <li>
+          <span class="icon-dot">A</span>
+          <div><b>Lokasi Dusun</b><span>Dusun Sabrangkali — lihat peta interaktif di samping untuk batas wilayah dan rute.</span></div>
+        </li>
+      </ul>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1057.926140795767!2d110.26404147419903!3d-7.627751541720937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sid!2sid!4v1784020773799!5m2!1sid!2sid" loading="lazy" allowfullscreen title="Peta lokasi Dusun Sabrangkali"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+      <img src="public/logo.webp" alt="" width="38" height="38" style="flex-shrink:0;">
+        <b>Dusun Sabrangkali</b>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#visi-misi">Visi &amp; Misi</a></li>
+            <li><a href="#struktur">Struktur</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Informasi</h4>
+          <ul>
+            <li><a href="#potensi">Potensi Dusun</a></li>
+            <li><a href="#tutupan-lahan">Tutupan Lahan</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Layanan</h4>
+          <ul>
+            <li><a href="#kontak">Kontak</a></li>
+            <li><a href="#top">Kembali ke Atas</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Warga Dusun Sabrangkali.</span>
+      <span>Dibuat untuk keperluan profil dusun.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
